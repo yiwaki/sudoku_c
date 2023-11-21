@@ -1,6 +1,6 @@
 import numpy as np
 import time
-from sudoku import c_brute_force
+from sudoku_c import bruteforce
 
 filepath = "data/evil_3.csv"
 x = np.loadtxt(filepath, delimiter=",").astype(np.uint16)
@@ -8,7 +8,7 @@ print("Puzzle:")
 print(x)
 
 start = time.process_time()
-y = c_brute_force(x)
+y = bruteforce(x)
 end = time.process_time()
 elapsed = end - start
 

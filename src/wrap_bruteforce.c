@@ -63,18 +63,18 @@ static PyObject *wrap_bruteforce(PyObject *self, PyObject *args) {
 }
 
 static PyMethodDef methods[] = {
-    {"c_brute_force", wrap_bruteforce, METH_VARARGS, ""},
+    {"bruteforce", wrap_bruteforce, METH_VARARGS, ""},
     {NULL, NULL, 0, NULL}
 };
 
 static struct PyModuleDef module = {
     PyModuleDef_HEAD_INIT,
-    "sudoku", "Some documentation",
+    "sudoku_c", "Some documentation",
     -1,
     methods
 };
 
-PyMODINIT_FUNC PyInit_sudoku(void) {
+PyMODINIT_FUNC PyInit_sudoku_c(void) {
     import_array();
     return PyModule_Create(&module);
 }
