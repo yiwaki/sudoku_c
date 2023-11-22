@@ -9,6 +9,7 @@ enable_testing()
 add_executable(bruteforce_main bruteforce_main.c bruteforce.c bitmap.c matrix.c)
 target_compile_features(bruteforce_main PRIVATE c_std_11)
 target_compile_options(bruteforce_main PRIVATE -Wall)
+target_link_libraries(bruteforce_main m)
 
 add_test(NAME bf_test COMMAND bruteforce_main CONFIGULATIONS Debug)
 
