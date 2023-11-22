@@ -9,11 +9,15 @@ endif
 ifeq ($(shell uname),MSYS_NT-10.0-WOW)
 clean:
 	rm -Rf build
-	rm sudoku_c.cp311-win_amd64.pyd
-else ifeq ($(shell uname),Linux)
+	rm sudoku_c.cp*-win_amd64.pyd
+else ifeq ($(shell uname),Darwin)
 clean:
 	rm -Rf build
-	rm sudoku_c.cpython-312-x86_64-linux-gnu.so
+	rm sudoku_c.cpython-*-darwin.so
+else
+clean:
+	rm -Rf build
+	rm sudoku_c.cpython-*-x86_64-linux-gnu.so
 endif
 
 test:
