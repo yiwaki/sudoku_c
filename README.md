@@ -20,10 +20,6 @@ xcode-select --install
 ```
 - For linux, or another Unix-like OS, install C compiler according to the installation instructions for your Linux distribution.
 
-## Other required tools
-- make
-- 
-
 ## Download this kit
 ```
 git clone https://github.com/yiwaki/sudoku_c.git
