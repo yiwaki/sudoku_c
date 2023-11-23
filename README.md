@@ -11,14 +11,23 @@ And install required package of Python with the following command.
 ```
 pip install setuptools
 ```
+For anaconda
+```
+conda install setuptools
+```
 
-## Install C
-- For Windows, install MinGW or C compiler with Vusual Studio
+## Install C compiler and other development tools.
+- For Windows, install MinGW or C compiler with Vusual Studio.
 - For macOS, run the following shell command.
 ```
 xcode-select --install
 ```
 - For linux, or another Unix-like OS, install C compiler according to the installation instructions for your Linux distribution.
+
+example (Ubuntu):
+```
+sudo apt install build-essential
+```
 
 ## Download this kit
 ```
