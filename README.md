@@ -33,6 +33,7 @@ python setup.py build_ext --inplace --compiler=mingw32
 ```
 - For others
 ```
+cd sudoku_rust
 python setup.py build_ext --inplace
 ```
 
