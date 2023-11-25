@@ -10,8 +10,8 @@ setup(
         Extension(
             "sudoku_c",
             sources=[
-                "src/wrap_bruteforce.c",
-                "src/bruteforce.c",
+                "src/wrap_sudoku.c",
+                "src/sudoku.c",
                 "src/bitmap.c",
                 "src/matrix.c",
             ],

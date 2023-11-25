@@ -1,4 +1,4 @@
-#include "bruteforce.h"
+#include "sudoku.h"
 
 #include <stdbool.h>
 #include <stdio.h>
