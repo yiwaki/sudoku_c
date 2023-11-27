@@ -4,7 +4,7 @@
 #include <stdbool.h>
 #include <math.h>
 
-#include "bruteforce.h"
+#include "sudoku.h"
 
 static PyObject *wrap_bruteforce(PyObject *self, PyObject *args) {
     npy_intp ndim, *dim;
