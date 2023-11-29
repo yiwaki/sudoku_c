@@ -29,9 +29,7 @@ bool _done(matrix_t *const x) {
     return true;
 }
 
-bool _prune_by_pivot(matrix_t *const y, const address_t *const pivot,
-    const bitmap_t bit) {
-
+bool _prune_by_pivot(matrix_t *const x, address_t *const pivot, const bitmap_t bit) {
     for (int block_type = 0; block_type < BLOCK_TYPE_CNT; block_type++) {
         int block_no = addr_to_block_no(block_type, pivot);
 
@@ -41,17 +39,18 @@ bool _prune_by_pivot(matrix_t *const y, const address_t *const pivot,
         for (int row_no = row_range[0]; row_no < row_range[1]; row_no++) {
             for (int col_no = col_range[0]; col_no < col_range[1]; col_no++) {
                 if (row_no == pivot->row && col_no == pivot->col) {
-                    (*y)[row_no][col_no] = bit;
+                    (*x)[row_no][col_no] = bit;
                     continue;
                 }
 
-                (*y)[row_no][col_no] &= (~bit);
+                (*x)[row_no][col_no] &= (~bit);
 
-                if ((*y)[row_no][col_no] == 0) return false;
+                if ((*x)[row_no][col_no] == 0) return false;
             }
         }
     }
-    return true;
+
+    return test_bitmap_by_addr(x, pivot);
 }
 
 void bruteforce(matrix_t *const x, int cell_no, matrix_t *const y) {
