@@ -6,7 +6,7 @@
 
 #include "sudoku.h"
 
-static PyObject *wrap_bruteforce(PyObject *self, PyObject *args) {
+static PyObject *wrap_solve(PyObject *self, PyObject *args) {
     npy_intp ndim, *dim;
     int type;
     PyArrayObject *x, *y;
@@ -51,7 +51,7 @@ static PyObject *wrap_bruteforce(PyObject *self, PyObject *args) {
         }
     }
 
-    bruteforce(mat_x, 0, mat_y);
+    solve(mat_x, 0, mat_y);
 
     for (int i = 0; i < MATRIX_SIZE; i++) {
         for (int j = 0; j < MATRIX_SIZE; j++) {
@@ -63,7 +63,7 @@ static PyObject *wrap_bruteforce(PyObject *self, PyObject *args) {
 }
 
 static PyMethodDef methods[] = {
-    {"bruteforce", wrap_bruteforce, METH_VARARGS, ""},
+    {"solve", wrap_solve, METH_VARARGS, ""},
     {NULL, NULL, 0, NULL}
 };
 

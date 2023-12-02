@@ -43,7 +43,7 @@ int main(void) {
 
     matrix_t y;
 
-    bruteforce(&x, 0, &y);
+    solve(&x, 0, &y);
 
     printf("\n");
     for (int row = 0; row < MATRIX_SIZE; row++) {

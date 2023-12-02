@@ -24,6 +24,5 @@ typedef struct {
 void cell_no_to_addr(const int cell_no, address_t *const addr);
 int addr_to_block_no(const block_t block_type, const address_t *const addr);
 void block_range(const block_t block_type, const int block_no, int row_range[2], int col_range[2]);
-bool test_bitmap_by_addr(matrix_t *const x, address_t *const addr);
 
 #endif  // MATRIX_H

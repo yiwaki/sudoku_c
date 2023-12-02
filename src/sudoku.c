@@ -29,6 +29,27 @@ bool _done(matrix_t *const x) {
     return true;
 }
 
+bool _test_bitmap_by_addr(matrix_t *const x, address_t *const addr) {
+    for (int block_type = 0; block_type < BLOCK_TYPE_CNT; block_type++) {
+        block_t block_no = addr_to_block_no(block_type, addr);
+
+        int row_range[2], col_range[2];
+        block_range(block_type, block_no, row_range, col_range);
+
+        bitmap_t bmp = 0;
+        for (int row_no = row_range[0]; row_no < row_range[1]; row_no++) {
+            for (int col_no = col_range[0]; col_no < col_range[1]; col_no++) {
+                bmp |= (*x)[row_no][col_no];
+            }
+        }
+
+        if (bmp != FULL_BIT) {
+            return false;
+        }
+    }
+    return true;
+}
+
 bool _prune_by_pivot(matrix_t *const x, address_t *const pivot, const bitmap_t bit) {
     for (int block_type = 0; block_type < BLOCK_TYPE_CNT; block_type++) {
         int block_no = addr_to_block_no(block_type, pivot);
@@ -50,10 +71,10 @@ bool _prune_by_pivot(matrix_t *const x, address_t *const pivot, const bitmap_t b
         }
     }
 
-    return test_bitmap_by_addr(x, pivot);
+    return _test_bitmap_by_addr(x, pivot);
 }
 
-void bruteforce(matrix_t *const x, int cell_no, matrix_t *const y) {
+void solve(matrix_t *const x, int cell_no, matrix_t *const y) {
     if (cell_no >= MATRIX_SIZE * MATRIX_SIZE) return;
 
     address_t addr;
@@ -67,7 +88,7 @@ void bruteforce(matrix_t *const x, int cell_no, matrix_t *const y) {
         if (!_prune_by_pivot(y, &addr, bits[i])) continue;
 
         matrix_t work;
-        bruteforce(y, cell_no + 1, &work);
+        solve(y, cell_no + 1, &work);
 
         if (_done(&work)) {
             memcpy(y, work, sizeof(matrix_t));
