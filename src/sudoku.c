@@ -29,7 +29,7 @@ bool _done(matrix_t *const x) {
     return true;
 }
 
-bool _test_bitmap_by_addr(matrix_t *const x, address_t *const addr) {
+bool _check_bitmap_by_addr(matrix_t *const x, address_t *const addr) {
     for (int block_type = 0; block_type < BLOCK_TYPE_CNT; block_type++) {
         block_t block_no = addr_to_block_no(block_type, addr);
 
@@ -50,7 +50,7 @@ bool _test_bitmap_by_addr(matrix_t *const x, address_t *const addr) {
     return true;
 }
 
-bool _prune_by_pivot(matrix_t *const x, address_t *const pivot, const bitmap_t bit) {
+bool _pruned_by_pivot(matrix_t *const x, address_t *const pivot, const bitmap_t bit) {
     for (int block_type = 0; block_type < BLOCK_TYPE_CNT; block_type++) {
         int block_no = addr_to_block_no(block_type, pivot);
 
@@ -71,7 +71,7 @@ bool _prune_by_pivot(matrix_t *const x, address_t *const pivot, const bitmap_t b
         }
     }
 
-    return _test_bitmap_by_addr(x, pivot);
+    return _check_bitmap_by_addr(x, pivot);
 }
 
 void solve(matrix_t *const x, int cell_no, matrix_t *const y) {
@@ -85,7 +85,7 @@ void solve(matrix_t *const x, int cell_no, matrix_t *const y) {
 
     for (int i = 0; i < bit_cnt; i++) {
         memcpy(y, x, sizeof(matrix_t));
-        if (!_prune_by_pivot(y, &addr, bits[i])) continue;
+        if (!_pruned_by_pivot(y, &addr, bits[i])) continue;
 
         matrix_t work;
         solve(y, cell_no + 1, &work);
