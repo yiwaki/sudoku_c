@@ -1,10 +1,10 @@
-# ifeq ($(shell uname),MSYS_NT-10.0-WOW)
-# develop:
-# 	python setup.py build_ext --inplace --compiler=mingw32
-# else
+ifeq ($(shell uname),MSYS_NT-10.0-WOW)
+develop:
+	python setup.py build_ext --inplace --compiler=mingw32
+else
 develop:
 	python setup.py build_ext --inplace
-# endif
+endif
 
 ifeq ($(shell uname),MSYS_NT-10.0-WOW)
 clean:

@@ -19,7 +19,7 @@ setup(
             include_dirs=[numpy.get_include()],
             library_dirs=[],
             libraries=[],
-            extra_compile_args=[("-std=c11")],
+            extra_compile_args=[],
             extra_link_args=[],
         )
     ],

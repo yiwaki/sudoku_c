@@ -35,7 +35,7 @@ static PyObject *wrap_solve(PyObject *self, PyObject *args) {
         return NULL;
     }
 
-    y = (PyArrayObject *)PyArray_SimpleNew(ndim, dim, type);
+    y = (PyArrayObject *)PyArray_SimpleNew((int)ndim, dim, type);
     if (y == NULL) return NULL;
 
     mat_x = PyArray_DATA(x);
@@ -55,7 +55,7 @@ static PyObject *wrap_solve(PyObject *self, PyObject *args) {
 
     for (int i = 0; i < MATRIX_SIZE; i++) {
         for (int j = 0; j < MATRIX_SIZE; j++) {
-            (*mat_y)[i][j] = log2((*mat_y)[i][j]) + 1;
+            (*mat_y)[i][j] = (bitmap_t)log2((*mat_y)[i][j]) + 1;
         }
     }
 
