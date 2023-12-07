@@ -1,12 +1,7 @@
-ifeq ($(shell uname),MSYS_NT-10.0-WOW)
-develop:
-	python setup.py build_ext --inplace --compiler=mingw32
-else
 develop:
 	python setup.py build_ext --inplace
-endif
 
-ifeq ($(shell uname),MSYS_NT-10.0-WOW)
+ifeq ($(OS),Windows_NT)
 clean:
 	rm -Rf build
 	rm sudoku_c.cp*-win_amd64.pyd
