@@ -10,7 +10,7 @@ setup(
         Extension(
             "sudoku_c",
             sources=[
-                "src/wrap_sudoku.c",
+                "src/lib.c",
                 "src/sudoku.c",
                 "src/bitmap.c",
                 "src/matrix.c",
