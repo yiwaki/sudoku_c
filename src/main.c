@@ -59,7 +59,7 @@ int main(void) {
         printf("\n");
     }
 
-    printf("elapsed time: %ld\n", (end.tv_usec - start.tv_usec) * 1E-9);
+    printf("elapsed time: %f\n", (end.tv_usec - start.tv_usec) * 1E-9);
 
     return EXIT_SUCCESS;
 }
