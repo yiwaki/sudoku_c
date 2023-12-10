@@ -1,5 +1,5 @@
 # python setup.py build_ext --inplace
-# python setup.py build_ext --inplace --compiler=mingw32 (for mingw/windows builds)
+# python setup.py build_ext --inplace --compiler=mingw32 (for mingw/windows)
 import numpy
 from setuptools import Extension, setup
 
