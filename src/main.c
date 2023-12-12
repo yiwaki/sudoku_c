@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <sys/time.h>
 
 int main(void) {
     // matrix_t x = {
@@ -29,6 +30,7 @@ int main(void) {
         {8,9,0,0,5,4,0,2,1}
     };
 
+    printf("Problem:\n");
     for (int i = 0; i < MATRIX_SIZE; i++) {
         for (int j = 0; j < MATRIX_SIZE; j++) {
             printf("%u ", x[i][j]);
@@ -41,17 +43,23 @@ int main(void) {
         printf("\n");
     }
 
-    matrix_t y;
+    struct timeval start, end;
+    gettimeofday(&start, 0);
 
+    matrix_t y;
     solve(&x, 0, &y);
 
-    printf("\n");
+    gettimeofday(&end, 0);
+
+    printf("Solution:\n");
     for (int row = 0; row < MATRIX_SIZE; row++) {
         for (int col = 0; col < MATRIX_SIZE; col++) {
             printf("%1.0f ", log2(y[row][col]) + 1);
         }
         printf("\n");
     }
+
+    printf("elapsed time: %f\n", (end.tv_usec - start.tv_usec) * 1E-9);
 
     return EXIT_SUCCESS;
 }

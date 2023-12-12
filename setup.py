@@ -1,5 +1,5 @@
 # python setup.py build_ext --inplace
-# python setup.py build_ext --inplace --compiler=mingw32 (for mingw/windows builds)
+# python setup.py build_ext --inplace --compiler=mingw32 (for mingw/windows)
 import numpy
 from setuptools import Extension, setup
 
@@ -10,7 +10,7 @@ setup(
         Extension(
             "sudoku_c",
             sources=[
-                "src/wrap_sudoku.c",
+                "src/lib.c",
                 "src/sudoku.c",
                 "src/bitmap.c",
                 "src/matrix.c",

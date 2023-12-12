@@ -8,11 +8,12 @@
 
 typedef bitmap_t matrix_t[MATRIX_SIZE][MATRIX_SIZE];
 
+#define BLOCK_TYPE_CNT (3)
+
 typedef enum {
     Row = 0,
     Column,
     Square,
-    BLOCK_TYPE_CNT  // count of kinds of block type (Row/Column/Square)
 } block_t;
 
 typedef struct {
