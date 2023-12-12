@@ -16,3 +16,7 @@ print("Solution:")
 print(y)
 
 print(f"elapsed time: {elapsed:.6f}")
+
+if not np.all((x == y) == (x != 0)):
+    print("Error")
+
