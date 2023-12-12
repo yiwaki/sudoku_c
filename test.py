@@ -2,7 +2,7 @@ import time
 
 import numpy as np
 
-from sudoku_rust import solve
+from sudoku_c import solve
 
 filepath = "data/evil_3.csv"
 x = np.loadtxt(filepath, delimiter=",").astype(np.uint16)
@@ -10,7 +10,7 @@ print("Puzzle:")
 print(x)
 
 start = time.perf_counter()
-y = solve(x)
+y = solve(x.copy())
 end = time.perf_counter()
 elapsed = end - start
 
