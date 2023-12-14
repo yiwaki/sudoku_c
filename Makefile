@@ -15,5 +15,5 @@ clean:
 	rm sudoku_c.cpython-*-x86_64-linux-gnu.so
 endif
 
-test:
-	python test.py
+sample:
+	python sample.py
