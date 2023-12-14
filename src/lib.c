@@ -2,6 +2,7 @@
 #include <numpy/arrayobject.h>
 #include <numpy/arrayscalars.h>
 #include <stdbool.h>
+#include <stddef.h>
 #include <math.h>
 
 #include "sudoku.h"
