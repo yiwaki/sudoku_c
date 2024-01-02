@@ -11,9 +11,9 @@ typedef bitmap_t matrix_t[MATRIX_SIZE][MATRIX_SIZE];
 #define BLOCK_TYPE_CNT (3)
 
 typedef enum {
-    Row = 0,
-    Column,
-    Square,
+    ROW = 1,
+    COLUMN,
+    SQUARE,
 } block_t;
 
 typedef struct {
