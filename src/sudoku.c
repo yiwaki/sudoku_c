@@ -9,7 +9,7 @@
 #include "matrix.h"
 
 bool _done(matrix_t *const x) {
-    for (int block_type = 0; block_type < BLOCK_TYPE_CNT; block_type++) {
+    for (int block_type = ROW; block_type < BLOCK_TYPE_CNT; block_type++) {
         for (int block_no = 0; block_no < MATRIX_SIZE; block_no++) {
             int row_range[2], col_range[2];
             block_range(block_type, block_no, row_range, col_range);
@@ -30,7 +30,7 @@ bool _done(matrix_t *const x) {
 }
 
 bool _check_bitmap_by_addr(matrix_t *const x, address_t *const addr) {
-    for (int block_type = 0; block_type < BLOCK_TYPE_CNT; block_type++) {
+    for (int block_type = ROW; block_type < BLOCK_TYPE_CNT; block_type++) {
         block_t block_no = addr_to_block_no(block_type, addr);
 
         int row_range[2], col_range[2];
@@ -51,7 +51,7 @@ bool _check_bitmap_by_addr(matrix_t *const x, address_t *const addr) {
 }
 
 bool _pruned_by_pivot(matrix_t *const x, address_t *const pivot, const bitmap_t bit) {
-    for (int block_type = 0; block_type < BLOCK_TYPE_CNT; block_type++) {
+    for (int block_type = ROW; block_type < BLOCK_TYPE_CNT; block_type++) {
         int block_no = addr_to_block_no(block_type, pivot);
 
         int row_range[2], col_range[2];
