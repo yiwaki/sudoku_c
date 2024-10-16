@@ -37,12 +37,12 @@ git clone https://github.com/yiwaki/sudoku_c.git
 ## Compile and install
 - For Windows with MinGW
 ```
-cd sudoku_rust
+cd sudoku_c
 python setup.py build_ext --inplace --compiler=mingw32
 ```
 - For others
 ```
-cd sudoku_rust
+cd sudoku_c
 python setup.py build_ext --inplace
 ```
 
