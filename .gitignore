@@ -73,4 +73,5 @@ docs/_build/
 .python-version
 
 # uv
+pyproject.toml
 uv.lock
