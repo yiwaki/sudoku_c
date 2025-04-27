@@ -12,18 +12,21 @@ And install required package of Python with the following command.
 
 ```
 pip install setuptools
+pip install numpy
 ```
 
 For uv
 
 ```
 uv add setuptools
+uv add numpy
 ```
 
 For anaconda
 
 ```
 conda install setuptools
+conda install numpy
 ```
 
 ## Install C compiler and other development tools.
