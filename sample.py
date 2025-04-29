@@ -1,7 +1,6 @@
 import time
 
 import numpy as np
-
 from sudoku_c import solve
 
 filepath = "data/evil_3.csv"
