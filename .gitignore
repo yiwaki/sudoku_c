@@ -71,7 +71,3 @@ docs/_build/
 
 # Pyenv
 .python-version
-
-# uv
-pyproject.toml
-uv.lock
