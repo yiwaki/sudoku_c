@@ -29,22 +29,29 @@ conda install setuptools
 conda install numpy
 ```
 
-## Install C compiler and other development tools.
+## Install C compiler and other development tools. {.tabset}
 
-- For Windows, install MinGW or C compiler with Vusual Studio.
-- For macOS, run the following shell command.
+### For Windows
+
+```
+Install MinGW or C compiler with Vusual Studio.
+```
+
+### For macOS, run the following shell command.
 
 ```
 xcode-select --install
 ```
 
-- For linux, or another Unix-like OS, install C compiler according to the installation instructions for your Linux distribution.
+ For linux, or another Unix-like OS, install C compiler according to the installation instructions for your Linux distribution.
 
-example (Ubuntu):
+### Ubuntu:
 
 ```
 sudo apt install build-essential
 ```
+
+### {-}
 
 ## Download this kit
 
