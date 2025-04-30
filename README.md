@@ -4,81 +4,101 @@ Python module to solve Sudoku puzzle written in C.
 
 For more information on Sudoku, see [Wikipedia](https://en.wikipedia.org/wiki/Sudoku).
 
-## Install Python
+## Install make command
 
-Install Python with your preferred method - pyenv, anaconda, and so on.
+- For Windows:
 
-And install required package of Python with the following command.
+Download the installation kit for your Windows from [here](http://gnuwin32.sourceforge.net/packages/make.htm) and run it.
 
-```
-pip install setuptools
-pip install numpy
-```
-
-For uv
-
-```
-uv add setuptools
-uv add numpy
-```
-
-For anaconda
-
-```
-conda install setuptools
-conda install numpy
-```
-
-## Install C compiler and other development tools. {.tabset}
-
-### For Windows
-
-```
-Install MinGW or C compiler with Vusual Studio.
-```
-
-### For macOS, run the following shell command.
+- For macOS:
 
 ```
 xcode-select --install
 ```
 
- For linux, or another Unix-like OS, install C compiler according to the installation instructions for your Linux distribution.
+- For Debian/Ubuntu:
 
-### Ubuntu:
+```
+sudo apt install -y make
+```
+
+- For CentOS/Fedora:
+
+```
+sudo yum install -y make
+```
+
+## Install uv - Python package and project manager
+
+- For Windows:
+
+```
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+```
+
+- For macOS, linux, or another Unix-like OS:
+
+```
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+## Install C compiler and other development tools.
+
+- For Windows
+
+```
+Install MinGW or C compiler with Vusual Studio.
+```
+
+- For macOS
+
+```
+xcode-select --install
+```
+
+- For linux, or another Unix-like OS:
+
+Install C compiler according to the installation instructions for your Linux distribution.
+
+- Ubuntu:
 
 ```
 sudo apt install build-essential
 ```
 
-### {-}
-
 ## Download this kit
 
 ```
+cd [your project directory]
 git clone https://github.com/yiwaki/sudoku_c.git
+```
+
+## Make your environment
+
+- For Windows:
+
+```
+cd sudoku_rust
+./make_env.ps1
+```
+
+- For macOS, linux, or another Unix-like OS:
+
+```
+cd sudoku_rust
+source ./make_env.sh
 ```
 
 ## Compile and install
 
-- For Windows with MinGW
-
 ```
-cd sudoku_c
-python setup.py build_ext --inplace --compiler=mingw32
-```
-
-- For others
-
-```
-cd sudoku_c
-python setup.py build_ext --inplace
+make develop
 ```
 
 ## Run sample program
 
 ```
-python test.py
+make sample
 ```
 
 ## How to make Sudoku puzzle
