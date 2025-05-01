@@ -78,14 +78,14 @@ git clone https://github.com/yiwaki/sudoku_c.git
 - For Windows:
 
 ```
-cd sudoku_rust
+cd sudoku_c
 ./make_env.ps1
 ```
 
 - For macOS, linux, or another Unix-like OS:
 
 ```
-cd sudoku_rust
+cd sudoku_c
 source ./make_env.sh
 ```
 

@@ -14,4 +14,5 @@ dependencies = [
 dev = [
     "ruff>=0.11.7",
     "setuptools>=80.0.1",
+    "types-setuptools>=80.0.0.20250429",
 ]
