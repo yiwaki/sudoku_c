@@ -71,3 +71,7 @@ docs/_build/
 
 # Pyenv
 .python-version
+
+# linter cache
+.mypy_cache
+.ruff_cache

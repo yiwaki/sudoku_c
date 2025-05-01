@@ -75,14 +75,14 @@ skip-magic-trailing-comma = false
 # Like Black, automatically detect the appropriate line ending.
 line-ending = "auto"
 
+[lint.per-file-ignores]
 # ファイルごとのエラー除外
-[per-file-ignores]
 "__init__.py" = ["F401"]
 
+[lint.isort]
 # isort の設定
-[isort]
 known-third-party = ["fastapi", "pydantic", "starlette"]
 
-[pyupgrade]
+[lint.pyupgrade]
 # Python3.8互換のための設定
 keep-runtime-typing = true
