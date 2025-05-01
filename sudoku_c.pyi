@@ -1,6 +1,6 @@
-import numpy.typing as npt
+from numpy.typing import NDArray
 
-def solve(x: npt.NDArray) -> npt.NDArray:
+def solve(x: NDArray) -> NDArray:
     """数独を解く
 
     Args:
