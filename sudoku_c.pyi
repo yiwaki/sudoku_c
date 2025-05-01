@@ -4,9 +4,9 @@ def solve(x: npt.NDArray) -> npt.NDArray:
     """数独を解く
 
     Args:
-        x (npt.NDArray): 数独の問題
+        x (NDArray): 数独の問題
 
     Returns:
-        npt.NDArray: 回答
+        NDArray: 回答
     """
     ...
