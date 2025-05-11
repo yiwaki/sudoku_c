@@ -1,3 +1,7 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "sudoku-c"
 version = "0.1.0"
@@ -5,6 +9,7 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "build>=1.2.2.post1",
     "ipykernel>=6.29.5",
     "nptyping>=2.0.1",
     "numpy>=2.2.5",
@@ -12,7 +17,9 @@ dependencies = [
 
 [dependency-groups]
 dev = [
+    "build>=1.2.2.post1",
     "ruff>=0.11.7",
     "setuptools>=80.0.1",
     "types-setuptools>=80.0.0.20250429",
+    "wheel>=0.45.1",
 ]

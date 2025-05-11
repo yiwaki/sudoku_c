@@ -4,7 +4,7 @@ develop:
 ifeq ($(OS),Windows_NT)
 clean:
 	rm -Rf build
-	rm sudoku_c.cp*-win_amd64.pyd
+	rm src/sudoku_c.cp*-win_amd64.pyd
 else ifeq ($(shell uname),Darwin)
 clean:
 	rm -Rf build

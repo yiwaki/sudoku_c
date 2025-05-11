@@ -14,7 +14,7 @@ static PyObject *wrap_solve(PyObject *self, PyObject *args) {
     matrix_t *mat_x, *mat_y;
 
     if (!PyArg_ParseTuple(args, "O!", &PyArray_Type, &x))
-        return NULL;
+        Py_RETURN_NONE;
 
     ndim = PyArray_NDIM(x);
     dim = PyArray_DIMS(x);
@@ -23,21 +23,21 @@ static PyObject *wrap_solve(PyObject *self, PyObject *args) {
 
     if (ndim != 2) {
         PyErr_SetString(PyExc_TypeError, "unexpected ndim of array (ndim!=2)");
-        return NULL;
+        Py_RETURN_NONE;
     }
 
     if (dim[0] != MATRIX_SIZE && dim[1] != MATRIX_SIZE) {
         PyErr_SetString(PyExc_TypeError, "unexpected dim of array (dim!=9)");
-        return NULL;
+        Py_RETURN_NONE;
     }
 
     if (type != NPY_UINT16) {
         PyErr_SetString(PyExc_TypeError, "unexpected dtype of array (not numpy.uint16)");
-        return NULL;
+        Py_RETURN_NONE;
     }
 
     y = (PyArrayObject *)PyArray_SimpleNew((int)ndim, dim, type);
-    if (y == NULL) return NULL;
+    if (y == NULL) Py_RETURN_NONE;
 
     mat_x = PyArray_DATA(x);
     mat_y = PyArray_DATA(y);
