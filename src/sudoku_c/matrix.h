@@ -1,4 +1,5 @@
-#pragma once
+#ifndef SUDOKU_C_MATRIX_H
+#define SUDOKU_C_MATRIX_H
 
 #include <stdbool.h>
 #include "bitmap.h"
@@ -11,7 +12,7 @@ typedef bitmap_t matrix_t[MATRIX_SIZE][MATRIX_SIZE];
 #define BLOCK_TYPE_CNT (3)
 
 typedef enum {
-    ROW = 1,
+    ROW,
     COLUMN,
     SQUARE,
 } block_t;
@@ -24,3 +25,5 @@ typedef struct {
 void cell_no_to_addr(const int cell_no, address_t *const addr);
 int addr_to_block_no(const block_t block_type, const address_t *const addr);
 void block_range(const block_t block_type, const int block_no, int row_range[2], int col_range[2]);
+
+#endif //SUDOKU_C_MATRIX_H

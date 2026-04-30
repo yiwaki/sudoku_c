@@ -3,9 +3,9 @@ import time
 
 import numpy as np
 
-from sudoku_c import solve, __version__
+from sudoku_c import __version__, check, solve
 
-print(f"sudoku_c Ver.{__version__}")
+print(f"sudoku_c ver.{__version__}")
 
 if len(sys.argv) == 1:
     print(f"usage: {sys.argv[0]} filename")
@@ -36,4 +36,4 @@ except Exception as e:
 assert np.all((x == y) == (x != 0)), (
     "The solution is not consistent with the input problem."
 )
-# assert check(y), "The solution is invalid."
+assert check(y), "The solution is invalid."

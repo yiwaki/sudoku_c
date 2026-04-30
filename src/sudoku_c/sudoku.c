@@ -8,7 +8,7 @@
 #include "bitmap.h"
 #include "matrix.h"
 
-bool _done(matrix_t *const x) {
+bool check(matrix_t *const x) {
     for (int block_type = ROW; block_type < BLOCK_TYPE_CNT; block_type++) {
         for (int block_no = 0; block_no < MATRIX_SIZE; block_no++) {
             int row_range[2], col_range[2];
@@ -26,6 +26,7 @@ bool _done(matrix_t *const x) {
             if (bmp != FULL_BIT) return false;
         }
     }
+
     return true;
 }
 
@@ -43,10 +44,9 @@ bool _check_bitmap_by_addr(matrix_t *const x, address_t *const addr) {
             }
         }
 
-        if (bmp != FULL_BIT) {
-            return false;
-        }
+        if (bmp != FULL_BIT) return false;
     }
+
     return true;
 }
 
@@ -74,8 +74,11 @@ bool _pruned_by_pivot(matrix_t *const x, address_t *const pivot, const bitmap_t 
     return _check_bitmap_by_addr(x, pivot);
 }
 
-void solve(matrix_t *const x, int cell_no, matrix_t *const y) {
-    if (cell_no >= MATRIX_SIZE * MATRIX_SIZE) return;
+bool solve(matrix_t *const x, int cell_no, matrix_t *const y) {
+    if (cell_no >= MATRIX_SIZE * MATRIX_SIZE) {
+        memcpy(y, x, sizeof(matrix_t));
+        return true;
+    }
 
     address_t addr;
     cell_no_to_addr(cell_no, &addr);
@@ -88,11 +91,11 @@ void solve(matrix_t *const x, int cell_no, matrix_t *const y) {
         if (!_pruned_by_pivot(y, &addr, bits[i])) continue;
 
         matrix_t work;
-        solve(y, cell_no + 1, &work);
-
-        if (_done(&work)) {
+        if (solve(y, cell_no + 1, &work)) {
             memcpy(y, work, sizeof(matrix_t));
-            return;
+            return true;
         }
     }
+
+    return false;
 }

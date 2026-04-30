@@ -1,19 +1,19 @@
 develop:
-	uv run setup.py build_ext
+	uv run python setup.py build_ext --inplace
 
 ifeq ($(OS),Windows_NT)
 clean:
 	uv pip uninstall sudoku-c
-	rm -Rf build
-	rm src/sudoku_c.cp*-win_amd64.pyd
+	rmdir /s /q build
+	del /q src/sudoku_c/sudoku_c.cp*-win_amd64.pyd
 else ifeq ($(shell uname),Darwin)
 clean:
-	rm -Rf build
-	rm sudoku_c.cpython-*-darwin.so
+	rmdir -Rf build
+	 src/sudoku_c/sudoku_c.cpython-*-darwin.so
 else
 clean:
-	rm -Rf build
-	rm sudoku_c.cpython-*-x86_64-linux-gnu.so
+	rmdir -Rf build
+	rm src/sudoku_c/sudoku_c.cpython-*-x86_64-linux-gnu.so
 endif
 
 sample:

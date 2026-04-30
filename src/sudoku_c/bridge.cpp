@@ -2,17 +2,31 @@
 #include <pybind11/numpy.h>
 #include <string.h>
 
-namespace py = pybind11;
-
 extern "C" {
 #include "sudoku.h"
-    void solve(matrix_t *const x, int cell_no, matrix_t *const y);
+}
+
+namespace py = pybind11;
+
+bool py_check(py::array_t<uint16_t> input_matrix) {
+    py::buffer_info info = input_matrix.request();
+    if (info.ndim != 2 || info.shape[0] != 9 || info.shape[1] != 9) {
+        throw std::runtime_error("Input array must be of shape (9, 9)");
+    }
+
+    matrix_t matrix;
+    for (int i = 0; i < 81; i++) {
+        uint16_t val = static_cast<uint16_t *>(info.ptr)[i];
+        matrix[i / 9][i % 9] = (val > 0) ? (1 << (val - 1)) : FULL_BIT;
+    }
+
+    return check(&matrix);
 }
 
 py::array_t<uint16_t> py_solve(py::array_t<uint16_t> input_matrix) {
     py::buffer_info info = input_matrix.request();
-    if (info.ndim != 2) {
-        throw std::runtime_error("Input should be a 2D array");
+    if (info.ndim != 2 || info.shape[0] != 9 || info.shape[1] != 9) {
+        throw std::runtime_error("Input array must be of shape (9, 9)");
     }
 
     matrix_t start_state;
@@ -24,7 +38,9 @@ py::array_t<uint16_t> py_solve(py::array_t<uint16_t> input_matrix) {
     matrix_t result_state;
     memset(&result_state, 0, sizeof(matrix_t));
 
-    solve(&start_state, 0, &result_state);
+    if (!(solve(&start_state, 0, &result_state))) {
+        throw std::runtime_error("No solution found");
+    }
 
     auto result = py::array_t<uint16_t>({9, 9});
     py::buffer_info output_info = result.request();
@@ -39,5 +55,6 @@ py::array_t<uint16_t> py_solve(py::array_t<uint16_t> input_matrix) {
 
 PYBIND11_MODULE(sudoku_c, m) {
     m.doc() = "Sudoku solver C extension";
+    m.def("check", &py_check, "Check if the result is valid");
     m.def("solve", &py_solve, "Solve the sudoku puzzle");
 }
