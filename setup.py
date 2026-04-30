@@ -16,7 +16,8 @@ ext_modules = [
             pybind11.get_include(),
             "src/sudoku_c",
         ],
-        language='c++'
+        language='c++',
+        extra_compile_args=['/wd4819', '/O2', '/utf-8'],
     ),
 ]
 

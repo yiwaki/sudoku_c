@@ -8,7 +8,7 @@
 #include "bitmap.h"
 #include "matrix.h"
 
-bool check(matrix_t *const x) {
+bool check(matrix_t const *const x) {
     for (int block_type = ROW; block_type < BLOCK_TYPE_CNT; block_type++) {
         for (int block_no = 0; block_no < MATRIX_SIZE; block_no++) {
             int row_range[2], col_range[2];
@@ -30,7 +30,7 @@ bool check(matrix_t *const x) {
     return true;
 }
 
-bool _check_bitmap_by_addr(matrix_t *const x, address_t *const addr) {
+bool _check_bitmap_by_addr(matrix_t const *const x, address_t const *const addr) {
     for (int block_type = ROW; block_type < BLOCK_TYPE_CNT; block_type++) {
         block_t block_no = addr_to_block_no(block_type, addr);
 
@@ -50,7 +50,7 @@ bool _check_bitmap_by_addr(matrix_t *const x, address_t *const addr) {
     return true;
 }
 
-bool _pruned_by_pivot(matrix_t *const x, address_t *const pivot, const bitmap_t bit) {
+bool _pruned_by_pivot(matrix_t *const x, address_t const *const pivot, const bitmap_t bit) {
     for (int block_type = ROW; block_type < BLOCK_TYPE_CNT; block_type++) {
         int block_no = addr_to_block_no(block_type, pivot);
 
@@ -74,7 +74,7 @@ bool _pruned_by_pivot(matrix_t *const x, address_t *const pivot, const bitmap_t 
     return _check_bitmap_by_addr(x, pivot);
 }
 
-bool solve(matrix_t *const x, int cell_no, matrix_t *const y) {
+bool solve(matrix_t const *const x, int cell_no, matrix_t *const y) {
     if (cell_no >= MATRIX_SIZE * MATRIX_SIZE) {
         memcpy(y, x, sizeof(matrix_t));
         return true;
