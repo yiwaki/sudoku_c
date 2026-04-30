@@ -1,9 +1,9 @@
 [build-system]
-requires = ["setuptools"]
+requires = ["setuptools", "wheel", "pybind11"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "sudoku-c"
+name = "sudoku_c"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
@@ -13,6 +13,8 @@ dependencies = [
     "ipykernel>=6.29.5",
     "nptyping>=2.0.1",
     "numpy>=2.2.5",
+    "pybind11>=3.0.4",
+    "pytest>=9.0.3",
 ]
 
 [dependency-groups]
@@ -23,3 +25,9 @@ dev = [
     "types-setuptools>=80.0.0.20250429",
     "wheel>=0.45.1",
 ]
+
+[tool.uv]
+managed = true
+
+[tool.uv.extra-build-dependencies]
+sudoku-c = ["pybind11"]

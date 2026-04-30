@@ -1,22 +1,34 @@
-# python setup.py build
-# python setup.py build --compiler=mingw32 (for mingw/windows)
-# import numpy as np
-from setuptools import Extension, setup
+from setuptools import setup, Extension, find_packages
+import pybind11
+
+
+# すべてのCファイルをコンパイル対象に含める
+ext_modules = [
+    Extension(
+        "sudoku_c.sudoku_c",
+        sources=[
+            "src/sudoku_c/bridge.cpp",
+            "src/sudoku_c/sudoku.c",
+            "src/sudoku_c/matrix.c",
+            "src/sudoku_c/bitmap.c"
+        ],
+        include_dirs=[
+            pybind11.get_include(),
+            "src/sudoku_c",
+        ],
+        language='c++'
+    ),
+]
+
 
 setup(
     name="sudoku_c",
-    version="1.0.0",
-    ext_modules=[
-        Extension(
-            name="sudoku_c",
-            sources=[
-                "src/lib.c",
-                "src/sudoku.c",
-                "src/bitmap.c",
-                "src/matrix.c",
-            ],
-            # include_dirs=[np.get_include()],
-            include_dirs=["src", ".venv/Lib/site-packages/numpy/_core/include"],
-        ),
-    ],
+    version="0.1.0",
+    packages=find_packages(where="src"),
+    package_dir={"": "src"},
+    ext_modules=ext_modules,
+    package_data={
+        "sudoku_c": ["*.pyi", "py.typed"],
+    },
+    zip_safe=False,
 )

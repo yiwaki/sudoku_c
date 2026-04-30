@@ -70,7 +70,7 @@ static PyMethodDef methods[] = {
 
 static struct PyModuleDef module = {
     PyModuleDef_HEAD_INIT,
-    "sudoku_c", "Some documentation",
+    "sudoku-c", "Some documentation",
     -1,
     methods
 };

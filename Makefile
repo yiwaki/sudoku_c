@@ -1,8 +1,9 @@
 develop:
-	python setup.py build_ext --inplace
+	uv run setup.py build_ext
 
 ifeq ($(OS),Windows_NT)
 clean:
+	uv pip uninstall sudoku-c
 	rm -Rf build
 	rm src/sudoku_c.cp*-win_amd64.pyd
 else ifeq ($(shell uname),Darwin)
