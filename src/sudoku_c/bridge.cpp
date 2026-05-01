@@ -11,7 +11,7 @@ namespace py = pybind11;
 bool py_check(py::array_t<uint16_t> input_matrix) {
     py::buffer_info info = input_matrix.request();
     if (info.ndim != 2 || info.shape[0] != MATRIX_SIZE || info.shape[1] != MATRIX_SIZE) {
-        throw std::runtime_error("Input array must be of shape (9, 9)");
+        throw std::runtime_error("Input array must be of type uint16(9,9)");
     }
 
     matrix_t matrix;
@@ -26,7 +26,7 @@ bool py_check(py::array_t<uint16_t> input_matrix) {
 py::array_t<uint16_t> py_solve(py::array_t<uint16_t> input_matrix) {
     py::buffer_info info = input_matrix.request();
     if (info.ndim != 2 || info.shape[0] != MATRIX_SIZE || info.shape[1] != MATRIX_SIZE) {
-        throw std::runtime_error("Input array must be of shape (9, 9)");
+        throw std::runtime_error("Input array must be of type uint16(9,9)");
     }
 
     matrix_t start_state;

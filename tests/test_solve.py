@@ -46,6 +46,16 @@ def test_solve_no_solution():
     assert str(e.value) in "No solution found"
 
 
+def test_check_invalid_dtype():
+    filepath = "data/bad_2.csv"
+    x = np.loadtxt(filepath, delimiter=",").astype(np.uint32)
+
+    with pytest.raises(RuntimeError) as e:
+        assert not check(x)
+
+    assert str(e.value) in "Input array must be of type uint16(9,9)"
+
+
 def test_solve_invalid_input():
     filepath = "data/bad_2.csv"
     x = np.loadtxt(filepath, delimiter=",").astype(np.uint16)
@@ -53,7 +63,7 @@ def test_solve_invalid_input():
     with pytest.raises(RuntimeError) as e:
         _ = solve(x)
 
-    assert str(e.value) in "Input array must be of shape (9, 9)"
+    assert str(e.value) in "Input array must be of type uint16(9,9)"
 
 
 def test_check_bad_result():
@@ -70,4 +80,4 @@ def test_check_invalid_data():
     with pytest.raises(RuntimeError) as e:
         assert not check(x)
 
-    assert str(e.value) in "Input array must be of shape (9, 9)"
+    assert str(e.value) in "Input array must be of type uint16(9,9)"
