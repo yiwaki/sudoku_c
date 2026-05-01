@@ -8,7 +8,7 @@
 #include "bitmap.h"
 #include "matrix.h"
 
-bool check(matrix_t const *const x) {
+bool check(const matrix_t *const x) {
     for (int block_type = ROW; block_type < BLOCK_TYPE_CNT; block_type++) {
         for (int block_no = 0; block_no < MATRIX_SIZE; block_no++) {
             int row_range[2], col_range[2];
@@ -30,7 +30,7 @@ bool check(matrix_t const *const x) {
     return true;
 }
 
-bool _check_bitmap_by_addr(matrix_t const *const x, address_t const *const addr) {
+bool _check_bitmap_by_addr(const matrix_t *const x, const address_t *const addr) {
     for (int block_type = ROW; block_type < BLOCK_TYPE_CNT; block_type++) {
         block_t block_no = addr_to_block_no(block_type, addr);
 
@@ -50,7 +50,7 @@ bool _check_bitmap_by_addr(matrix_t const *const x, address_t const *const addr)
     return true;
 }
 
-bool _pruned_by_pivot(matrix_t *const x, address_t const *const pivot, const bitmap_t bit) {
+bool _pruned_by_pivot(matrix_t *const x, const address_t *const pivot, const bitmap_t bit) {
     for (int block_type = ROW; block_type < BLOCK_TYPE_CNT; block_type++) {
         int block_no = addr_to_block_no(block_type, pivot);
 
@@ -83,8 +83,9 @@ bool solve(matrix_t const *const x, int cell_no, matrix_t *const y) {
     address_t addr;
     cell_no_to_addr(cell_no, &addr);
 
+    int bit_cnt;
     bitmap_t bits[BITMAP_DIGIT];
-    int bit_cnt = split_single_bit((*x)[addr.row][addr.col], bits);
+    split_single_bit((*x)[addr.row][addr.col], &bit_cnt, bits);
 
     for (int i = 0; i < bit_cnt; i++) {
         memcpy(y, x, sizeof(matrix_t));

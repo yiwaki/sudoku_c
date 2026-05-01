@@ -36,7 +36,8 @@ int main(void) {
             printf("%u ", x[i][j]);
             if (x[i][j] == 0) {
                 x[i][j] = FULL_BIT;
-            } else {
+            }
+            else {
                 x[i][j] = 1 << (x[i][j] - 1);
             }
         }

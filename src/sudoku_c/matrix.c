@@ -40,6 +40,7 @@ int addr_to_block_no(const block_t block_type, const address_t *const addr) {
         block_no = -1;
         break;
     }
+
     return block_no;
 }
 

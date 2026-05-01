@@ -6,7 +6,7 @@
 
 typedef unsigned short bitmap_t;
 
-int split_single_bit(const bitmap_t bit, bitmap_t bits[BITMAP_DIGIT]);
+void split_single_bit(const bitmap_t bit, int *const cnt, bitmap_t bits[BITMAP_DIGIT]);
 int popcount(const bitmap_t bit);
 
 #endif // SUDOKU_C_BITMAP_H
