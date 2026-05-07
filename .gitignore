@@ -11,7 +11,6 @@ __pycache__/
 # Distribution / packaging
 .Python
 .venv/
-.venv
 env/
 bin/
 build/
@@ -71,6 +70,10 @@ docs/_build/
 
 # Pyenv
 .python-version
+
+# misc caches
+.mypy_cache/
+.ruff_cache/
 
 # linter cache
 .mypy_cache
