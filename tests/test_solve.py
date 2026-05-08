@@ -1,7 +1,7 @@
 import numpy as np
-import pytest
+import pytest  # pyright: ignore[reportMissingImports]
 
-from sudoku_c import solve, check
+from sudoku_c import check, solve
 
 
 def test_solve_easy():
@@ -43,7 +43,7 @@ def test_solve_no_solution():
     with pytest.raises(RuntimeError) as e:
         _ = solve(x)
 
-    assert str(e.value) in "No solution found"
+    assert "No solution found" in str(e.value)
 
 
 def test_check_invalid_dtype():
@@ -51,9 +51,9 @@ def test_check_invalid_dtype():
     x = np.loadtxt(filepath, delimiter=",").astype(np.uint32)
 
     with pytest.raises(RuntimeError) as e:
-        assert not check(x)
+        check(x)
 
-    assert str(e.value) in "Input array must be of type uint16(9,9)"
+    assert "Input array must be of type uint16(9,9)" in str(e.value)
 
 
 def test_solve_invalid_input():
@@ -63,7 +63,7 @@ def test_solve_invalid_input():
     with pytest.raises(RuntimeError) as e:
         _ = solve(x)
 
-    assert str(e.value) in "Input array must be of type uint16(9,9)"
+    assert "Input array must be of type uint16(9,9)" in str(e.value)
 
 
 def test_check_bad_result():

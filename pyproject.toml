@@ -10,16 +10,12 @@ readme = "README.md"
 requires-python = ">=3.10"
 license = "MIT"
 authors = [{ name = "y.iwaki", email = "yasushi.iwaki@gmail.com" }]
-dependencies = [
-    "build>=1.2.2.post1",
-    "nptyping>=2.0.1",
-    "numpy>=2.2.5",
-    "pybind11>=3.0.4",
-]
+dependencies = ["numpy>=2.2.6", "pybind11>=3.0.4"]
 
 [dependency-groups]
 dev = [
     "build>=1.2.2.post1",
+    "pytest>=9.0.3",
     "ruff>=0.11.7",
     "setuptools>=80.0.1",
     "types-setuptools>=80.0.0.20250429",
@@ -28,6 +24,3 @@ dev = [
 
 [tool.uv]
 managed = true
-
-# [tool.uv.extra-build-dependencies]
-# sudoku-c = ["pybind11"]
