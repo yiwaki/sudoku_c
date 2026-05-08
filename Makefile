@@ -9,10 +9,14 @@ clean:
 else ifeq ($(shell uname),Darwin)
 clean:
 	rm -Rf build
+	rm -Rf dist
+	rm -Rf src/sudoku_c.egg-info/
 	rm src/sudoku_c/sudoku_c.cpython-*-darwin.so
 else
 clean:
 	rm -Rf build
+	rm -Rf dist
+	rm -Rf src/sudoku_c.egg-info/
 	rm src/sudoku_c/sudoku_c.cpython-*-x86_64-linux-gnu.so
 endif
 
