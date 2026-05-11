@@ -1,6 +1,5 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/numpy.h>
-#include <string.h>
 
 extern "C" {
 #include "sudoku.h"
